@@ -54,5 +54,9 @@
   "prio": {
     "hash": "0x81d2c29deebe358e50ee7ccba839dd8e",
     "note": "U32 priority bag (sorted list); heap-shaped API"
+  },
+  "ringbuf": {
+    "hash": "0x831d2a84246839cb2e33f4e7653d3f09",
+    "note": "Fixed-capacity U32 FIFO ring buffer; fail-if-full push"
   }
 }
