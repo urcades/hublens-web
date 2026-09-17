@@ -50,5 +50,9 @@
   "path": {
     "hash": "0x4281bc413bf6e8133778749c9d315cbb",
     "note": "Unix-style String path helpers; light normalize"
+  },
+  "prio": {
+    "hash": "0x81d2c29deebe358e50ee7ccba839dd8e",
+    "note": "U32 priority bag (sorted list); heap-shaped API"
   }
 }
