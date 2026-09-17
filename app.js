@@ -607,14 +607,23 @@ function routeFromHash() {
 }
 
 function setActiveView(kind) {
-  const tab = kind === "pkg" || kind === "alias" ? (kind === "pkg" ? "packages" : "aliases") : kind;
+  // On package detail, hide every list tab — only #view-pkg should show.
+  // (Previously we kept tab-packages active, so detail stacked under the full list.)
+  const navTab =
+    kind === "pkg" ? "packages" : kind === "alias" ? "aliases" : kind;
   document.querySelectorAll(".tabs button").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.tab === tab);
+    btn.classList.toggle("active", btn.dataset.tab === navTab);
   });
   document.querySelectorAll(".tab").forEach((section) => {
-    section.classList.toggle("active", section.id === `tab-${tab}`);
+    const show =
+      kind !== "pkg" && section.id === `tab-${navTab}`;
+    section.classList.toggle("active", show);
   });
-  $("#view-pkg").classList.toggle("hidden", kind !== "pkg");
+  const onPkg = kind === "pkg";
+  $("#view-pkg").classList.toggle("hidden", !onPkg);
+  if (onPkg) {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
 }
 
 function renderRoute() {
