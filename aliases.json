@@ -58,5 +58,9 @@
   "ringbuf": {
     "hash": "0x831d2a84246839cb2e33f4e7653d3f09",
     "note": "Fixed-capacity U32 FIFO ring buffer; fail-if-full push"
+  },
+  "graph": {
+    "hash": "0x87443356945470112b78ad5f17a0cfb9",
+    "note": "Simple directed U32 graph; unique edges, insertion order"
   }
 }
