@@ -42,5 +42,13 @@
   "stack": {
     "hash": "0xcf57eb9f3da1111716e82e5b91407ff9",
     "note": "List-backed stack; top = list head"
+  },
+  "deque": {
+    "hash": "0xe91e783c63981e14b05dcd524cc215be",
+    "note": "Two-list double-ended queue; rear reversed"
+  },
+  "path": {
+    "hash": "0x4281bc413bf6e8133778749c9d315cbb",
+    "note": "Unix-style String path helpers; light normalize"
   }
 }
