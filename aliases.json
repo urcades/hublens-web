@@ -62,5 +62,9 @@
   "graph": {
     "hash": "0x87443356945470112b78ad5f17a0cfb9",
     "note": "Simple directed U32 graph; unique edges, insertion order"
+  },
+  "bitset": {
+    "hash": "0x3b8f9f546e51ef5efc252d01094290fb",
+    "note": "Packed Nat bit set over List of U32 words; sealed laws"
   }
 }
