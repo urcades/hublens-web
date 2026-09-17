@@ -1,0 +1,26 @@
+{
+  "greet": {
+    "hash": "0xb7229d741aa933e2e867adec2dc08b18",
+    "note": "Hub docs example (multifile + ADT + IO)"
+  },
+  "hello": {
+    "hash": "0x7a019df486729acf073c96a1eee7b4c2",
+    "note": "Minimal IO.print hello"
+  },
+  "nested": {
+    "hash": "0x0f883c5f54a94db1185081a5171fcd7d",
+    "note": "Nested + foreign JS + unfilled law twice"
+  },
+  "nonempty": {
+    "hash": "0x8d2ea06277454348c1b3fdaf2e31ed48",
+    "note": "NonEmpty / NEList foundational lib (lib.bend only)"
+  },
+  "queue": {
+    "hash": "0x61995e10548d45d2441f35cc3adcea7b",
+    "note": "Two-list FIFO Queue foundational lib (lib.bend only)"
+  },
+  "tree": {
+    "hash": "0x19fe2a68aca335d0b2f345065652553f",
+    "note": "Binary Tree with parallel map (lib.bend only)"
+  }
+}

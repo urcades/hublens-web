@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HubLens — We name pointers, not packages.</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <h1>HubLens</h1>
+      <p class="tagline">We name pointers, not packages.</p>
+    </div>
+    <p class="status" id="status">live from BendHub · waiting for bend kernel CI</p>
+  </header>
+
+  <nav class="tabs">
+    <button data-tab="packages" class="active">Packages</button>
+    <button data-tab="search">Search</button>
+    <button data-tab="aliases">Aliases</button>
+  </nav>
+
+  <main>
+    <section id="tab-packages" class="tab active">
+      <div id="pkg-list" class="card-list">Loading…</div>
+      <article id="pkg-detail" class="detail hidden"></article>
+    </section>
+
+    <section id="tab-search" class="tab">
+      <form id="search-form" class="row">
+        <input id="search-q" type="search" placeholder="Search source, symbols, aliases…" />
+        <button type="submit">Search</button>
+      </form>
+      <div id="search-results" class="card-list"></div>
+    </section>
+
+    <section id="tab-aliases" class="tab">
+      <form id="alias-lookup" class="row">
+        <input id="alias-name" type="text" placeholder="alias name (e.g. greet)" />
+        <button type="submit">Resolve</button>
+      </form>
+      <div id="alias-result" class="detail"></div>
+      <h3>Known aliases</h3>
+      <div id="alias-list" class="card-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Static overlay on <a href="https://hub.bend-lang.com" target="_blank" rel="noopener">BendHub</a>.
+      Always verify hashes. Copy real <code>import 0x…</code> lines — aliases are pointers only.
+      Source: <a href="https://github.com/urcades/hublens" target="_blank" rel="noopener">urcades/hublens</a>.
+    </p>
+  </footer>
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
