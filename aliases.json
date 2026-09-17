@@ -22,5 +22,21 @@
   "tree": {
     "hash": "0x19fe2a68aca335d0b2f345065652553f",
     "note": "Binary Tree with parallel map (lib.bend only)"
+  },
+  "parse": {
+    "hash": "0xd395e827d4f2e55365bfb5173c04c4ee",
+    "note": "Tiny String parser combinators (lib.bend only)"
+  },
+  "json": {
+    "hash": "0x59cd2884b6325289afe009cad736353a",
+    "note": "JSON leaf AST + encode/decode (Null/Bool/Num/Str; no @unsafe)"
+  },
+  "bytes": {
+    "hash": "0x64899be1eb10f0eeadb8816f50fda60d",
+    "note": "Bytes wrapper over List U32 (File.read_bytes); hex encode"
+  },
+  "test": {
+    "hash": "0x13e6f540958655a0df6133e871e59feb",
+    "note": "Bool check / suite helper (complements LAWS+PROOF)"
   }
 }

@@ -24,7 +24,6 @@
   <main>
     <section id="tab-packages" class="tab active">
       <div id="pkg-list" class="card-list">Loading…</div>
-      <article id="pkg-detail" class="detail hidden"></article>
     </section>
 
     <section id="tab-search" class="tab">
@@ -43,6 +42,11 @@
       <div id="alias-result" class="detail"></div>
       <h3>Known aliases</h3>
       <div id="alias-list" class="card-list"></div>
+    </section>
+
+    <section id="view-pkg" class="package-view hidden" aria-live="polite">
+      <a class="back-link" href="#/packages">← Back to packages</a>
+      <article id="pkg-detail" class="detail"></article>
     </section>
   </main>
 

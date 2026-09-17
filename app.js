@@ -14,6 +14,7 @@ const packageCache = new Map();
 let aliasList = [];
 /** @type {Record<string, { hash: string, note?: string }>} */
 let aliasMap = {};
+let hubLoaded = false;
 
 function escapeHtml(s) {
   return String(s)
@@ -370,15 +371,16 @@ function renderPackageList(packages) {
     .join("");
 
   el.querySelectorAll(".card").forEach((card) => {
-    card.addEventListener("click", () => showPackage(card.dataset.hash));
+    card.addEventListener("click", () => openPackage(card.dataset.hash));
   });
 }
 
-async function showPackage(hash) {
-  const p = packageCache.get(normalizeId(hash));
-  if (!p) return;
+function openPackage(hash) {
+  location.hash = "#/pkg/" + normalizeId(hash);
+}
+
+function renderPackageDetail(p) {
   const el = $("#pkg-detail");
-  el.classList.remove("hidden");
   el.innerHTML = `
     <h2 class="mono">${escapeHtml(p.hash)}</h2>
     <div class="meta">
@@ -445,7 +447,6 @@ async function showPackage(hash) {
     });
   });
 
-  el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function doSearch(q) {
@@ -521,10 +522,7 @@ function doSearch(q) {
     )
     .join("");
   el.querySelectorAll(".card").forEach((card) => {
-    card.addEventListener("click", () => {
-      document.querySelector('[data-tab="packages"]').click();
-      showPackage(card.dataset.hash);
-    });
+    card.addEventListener("click", () => openPackage(card.dataset.hash));
   });
 }
 
@@ -541,7 +539,11 @@ function loadAliasesUI() {
     )
     .join("");
   $("#alias-list").querySelectorAll(".card").forEach((card) => {
-    card.addEventListener("click", () => resolveAlias(card.dataset.name));
+    card.addEventListener("click", () => {
+      const next = `#/alias/${encodeURIComponent(card.dataset.name)}`;
+      if (location.hash === next) renderRoute();
+      else location.hash = next;
+    });
   });
 }
 
@@ -581,24 +583,65 @@ function resolveAlias(name) {
   });
   const openBtn = $("#alias-open-pkg");
   if (openBtn) {
-    openBtn.addEventListener("click", () => {
-      document.querySelector('[data-tab="packages"]').click();
-      showPackage(a.hash);
-    });
+    openBtn.addEventListener("click", () => openPackage(a.hash));
+  }
+}
+
+function routeFromHash() {
+  const raw = (location.hash || "#/").slice(1) || "/";
+  let parts;
+  try {
+    parts = raw.split("/").filter(Boolean).map((part) => decodeURIComponent(part));
+  } catch {
+    parts = [];
+  }
+  if (parts[0] === "pkg" && parts[1]) {
+    return { kind: "pkg", hash: normalizeId(parts[1]) };
+  }
+  if (parts[0] === "search") return { kind: "search" };
+  if (parts[0] === "aliases") return { kind: "aliases" };
+  if (parts[0] === "alias" && parts[1]) {
+    return { kind: "alias", name: parts.slice(1).join("/") };
+  }
+  return { kind: "packages" };
+}
+
+function setActiveView(kind) {
+  const tab = kind === "pkg" || kind === "alias" ? (kind === "pkg" ? "packages" : "aliases") : kind;
+  document.querySelectorAll(".tabs button").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.tab === tab);
+  });
+  document.querySelectorAll(".tab").forEach((section) => {
+    section.classList.toggle("active", section.id === `tab-${tab}`);
+  });
+  $("#view-pkg").classList.toggle("hidden", kind !== "pkg");
+}
+
+function renderRoute() {
+  const route = routeFromHash();
+  setActiveView(route.kind);
+  if (route.kind === "pkg") {
+    const pkg = packageCache.get(route.hash);
+    if (pkg) {
+      renderPackageDetail(pkg);
+    } else {
+      $("#pkg-detail").innerHTML = `<p class="meta">${
+        hubLoaded ? "Package not found in the BendHub index." : "Loading package…"
+      }</p>`;
+    }
+  } else if (route.kind === "alias") {
+    $("#alias-name").value = route.name;
+    resolveAlias(route.name);
   }
 }
 
 function setupTabs() {
   document.querySelectorAll(".tabs button").forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".tabs button").forEach((b) =>
-        b.classList.remove("active"),
-      );
-      document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
-      btn.classList.add("active");
-      $(`#tab-${btn.dataset.tab}`).classList.add("active");
+      location.hash = `#/${btn.dataset.tab}`;
     });
   });
+  window.addEventListener("hashchange", renderRoute);
 }
 
 async function boot() {
@@ -607,16 +650,23 @@ async function boot() {
 
   $("#search-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    doSearch($("#search-q").value.trim());
+    const q = $("#search-q").value.trim();
+    const next = "#/search";
+    if (location.hash !== next) location.hash = next;
+    doSearch(q);
   });
   $("#alias-lookup").addEventListener("submit", (e) => {
     e.preventDefault();
-    resolveAlias($("#alias-name").value.trim());
+    const name = $("#alias-name").value.trim();
+    const next = `#/alias/${encodeURIComponent(name)}`;
+    if (location.hash === next) renderRoute();
+    else location.hash = next;
   });
 
   try {
     await loadAliases();
     loadAliasesUI();
+    renderRoute();
   } catch (e) {
     $("#alias-list").innerHTML = `<p class="meta">Failed to load aliases: ${escapeHtml(e.message)}</p>`;
   }
@@ -634,6 +684,7 @@ async function boot() {
         const pkg = await loadPackage(entry.hash, entry);
         packages.push(pkg);
         renderPackageList(packages);
+        renderRoute();
       } catch (err) {
         console.warn("package load failed", entry.hash, err);
       }
@@ -644,6 +695,9 @@ async function boot() {
   } catch (e) {
     $("#pkg-list").innerHTML = `<p class='meta'>Hub unreachable: ${escapeHtml(e.message)}</p>`;
     $("#status").textContent = "hub offline · " + STATUS_TEXT;
+  } finally {
+    hubLoaded = true;
+    renderRoute();
   }
 }
 
