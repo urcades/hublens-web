@@ -38,5 +38,9 @@
   "test": {
     "hash": "0x13e6f540958655a0df6133e871e59feb",
     "note": "Bool check / suite helper (complements LAWS+PROOF)"
+  },
+  "stack": {
+    "hash": "0xcf57eb9f3da1111716e82e5b91407ff9",
+    "note": "List-backed stack; top = list head"
   }
 }

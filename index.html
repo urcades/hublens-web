@@ -15,36 +15,38 @@
     <p class="status" id="status">live from BendHub · waiting for bend kernel CI</p>
   </header>
 
-  <nav class="tabs">
-    <button data-tab="packages" class="active">Packages</button>
-    <button data-tab="search">Search</button>
-    <button data-tab="aliases">Aliases</button>
-  </nav>
-
   <main>
-    <section id="tab-packages" class="tab active">
-      <div id="pkg-list" class="card-list">Loading…</div>
-    </section>
+    <div id="browse">
+      <nav class="tabs">
+        <button data-tab="packages" class="active">Packages</button>
+        <button data-tab="search">Search</button>
+        <button data-tab="aliases">Aliases</button>
+      </nav>
 
-    <section id="tab-search" class="tab">
-      <form id="search-form" class="row">
-        <input id="search-q" type="search" placeholder="Search source, symbols, aliases…" />
-        <button type="submit">Search</button>
-      </form>
-      <div id="search-results" class="card-list"></div>
-    </section>
+      <section id="tab-packages" class="tab active">
+        <div id="pkg-list" class="card-list">Loading…</div>
+      </section>
 
-    <section id="tab-aliases" class="tab">
-      <form id="alias-lookup" class="row">
-        <input id="alias-name" type="text" placeholder="alias name (e.g. greet)" />
-        <button type="submit">Resolve</button>
-      </form>
-      <div id="alias-result" class="detail"></div>
-      <h3>Known aliases</h3>
-      <div id="alias-list" class="card-list"></div>
-    </section>
+      <section id="tab-search" class="tab">
+        <form id="search-form" class="row">
+          <input id="search-q" type="search" placeholder="Search source, symbols, aliases…" />
+          <button type="submit">Search</button>
+        </form>
+        <div id="search-results" class="card-list"></div>
+      </section>
 
-    <section id="view-pkg" class="package-view hidden" aria-live="polite">
+      <section id="tab-aliases" class="tab">
+        <form id="alias-lookup" class="row">
+          <input id="alias-name" type="text" placeholder="alias name (e.g. greet)" />
+          <button type="submit">Resolve</button>
+        </form>
+        <div id="alias-result" class="detail"></div>
+        <h3>Known aliases</h3>
+        <div id="alias-list" class="card-list"></div>
+      </section>
+    </div>
+
+    <section id="view-pkg" class="package-view" hidden>
       <a class="back-link" href="#/packages">← Back to packages</a>
       <article id="pkg-detail" class="detail"></article>
     </section>

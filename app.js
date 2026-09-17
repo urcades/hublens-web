@@ -607,23 +607,26 @@ function routeFromHash() {
 }
 
 function setActiveView(kind) {
-  // On package detail, hide every list tab — only #view-pkg should show.
-  // (Previously we kept tab-packages active, so detail stacked under the full list.)
-  const navTab =
-    kind === "pkg" ? "packages" : kind === "alias" ? "aliases" : kind;
+  const onPkg = kind === "pkg";
+  const browse = $("#browse");
+  const viewPkg = $("#view-pkg");
+
+  // Hide the entire browse chrome (tabs + lists) on package pages.
+  if (browse) browse.hidden = onPkg;
+  if (viewPkg) viewPkg.hidden = !onPkg;
+
+  if (onPkg) {
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  const navTab = kind === "alias" ? "aliases" : kind;
   document.querySelectorAll(".tabs button").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.tab === navTab);
   });
   document.querySelectorAll(".tab").forEach((section) => {
-    const show =
-      kind !== "pkg" && section.id === `tab-${navTab}`;
-    section.classList.toggle("active", show);
+    section.classList.toggle("active", section.id === `tab-${navTab}`);
   });
-  const onPkg = kind === "pkg";
-  $("#view-pkg").classList.toggle("hidden", !onPkg);
-  if (onPkg) {
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }
 }
 
 function renderRoute() {
