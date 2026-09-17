@@ -12,48 +12,48 @@
     "note": "Nested + foreign JS + unfilled law twice"
   },
   "nonempty": {
-    "hash": "0x8d2ea06277454348c1b3fdaf2e31ed48",
-    "note": "NonEmpty / NEList foundational lib (lib.bend only)"
+    "hash": "0xcc99578c1df5dd4557ca2ffa56ffce5f",
+    "note": "Non-empty lists; sealed laws"
   },
   "queue": {
-    "hash": "0x61995e10548d45d2441f35cc3adcea7b",
-    "note": "Two-list FIFO Queue foundational lib (lib.bend only)"
+    "hash": "0x5af6678dfaeeeb1cd1ffcb22d02217bc",
+    "note": "Two-list FIFO queue; sealed laws"
   },
   "tree": {
-    "hash": "0x19fe2a68aca335d0b2f345065652553f",
-    "note": "Binary Tree with parallel map (lib.bend only)"
+    "hash": "0x92b0674fe90445059e34a1165b692b0e",
+    "note": "Binary tree with parallel map; sealed"
   },
   "parse": {
-    "hash": "0xd395e827d4f2e55365bfb5173c04c4ee",
-    "note": "Tiny String parser combinators (lib.bend only)"
+    "hash": "0xdf88d6b259873c74c8d91fe09934de63",
+    "note": "Tiny String parser combinators; sealed"
   },
   "json": {
-    "hash": "0x59cd2884b6325289afe009cad736353a",
-    "note": "JSON leaf AST + encode/decode (Null/Bool/Num/Str; no @unsafe)"
+    "hash": "0x58fe986421eb4ce77da94e55266bfe22",
+    "note": "Leaf-only JSON AST (no nested); sealed"
   },
   "bytes": {
-    "hash": "0x64899be1eb10f0eeadb8816f50fda60d",
-    "note": "Bytes wrapper over List U32 (File.read_bytes); hex encode"
+    "hash": "0xc6de6e524c84b0784158389ee44fd48f",
+    "note": "List<&2,U32> bytes wrapper; sealed"
   },
   "test": {
-    "hash": "0x13e6f540958655a0df6133e871e59feb",
-    "note": "Bool check / suite helper (complements LAWS+PROOF)"
+    "hash": "0x4b7f9a0323ec18e3ac8e3a9514a1906d",
+    "note": "Bool check / suite helper; sealed"
   },
   "stack": {
-    "hash": "0xcf57eb9f3da1111716e82e5b91407ff9",
-    "note": "List-backed stack; top = list head"
+    "hash": "0xcc241f125bd10140bf0de054c2512463",
+    "note": "List-backed stack; top = list head; sealed"
   },
   "deque": {
-    "hash": "0xe91e783c63981e14b05dcd524cc215be",
-    "note": "Two-list double-ended queue; rear reversed"
+    "hash": "0xfeda1cb3f8c4b9576ff8c9fdc7be7891",
+    "note": "Two-list deque; rear reversed; sealed"
   },
   "path": {
-    "hash": "0x4281bc413bf6e8133778749c9d315cbb",
-    "note": "Unix-style String path helpers; light normalize"
+    "hash": "0xbe30b4c12fa21816c2b0e099f42f766e",
+    "note": "Unix-style String path helpers; sealed"
   },
   "prio": {
-    "hash": "0x81d2c29deebe358e50ee7ccba839dd8e",
-    "note": "U32 priority bag (sorted list); heap-shaped API"
+    "hash": "0x36850d3ea56845a044f30fd80ec1da6c",
+    "note": "U32 priority bag (sorted list); sealed"
   },
   "ringbuf": {
     "hash": "0x831d2a84246839cb2e33f4e7653d3f09",
