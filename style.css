@@ -1,5 +1,6 @@
-/* Structural layout only. No custom typography, colors, borders, or radii —
-   except dark-mode text/background invert below. */
+/* Structural layout + minimal card chrome.
+   Custom visuals: dark-mode text/background invert; entry cards use
+   44px radius, 1.1rem padding, and a thin currentColor border. */
 
 * { box-sizing: border-box; }
 
@@ -36,6 +37,13 @@
 .card-list {
   display: grid;
   gap: 0.75rem;
+}
+
+.card,
+.detail {
+  padding: 1.1rem;
+  border-radius: 44px;
+  border: 1px solid currentColor;
 }
 
 .chips {
