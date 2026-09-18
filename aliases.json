@@ -102,5 +102,17 @@
   "color-sample": {
     "hash": "0xedb848fc7835fe5f9d34e575a7612788",
     "note": "Sample Rgb in ColorRange via hub color+prng; sealed"
+  },
+  "vec2": {
+    "hash": "0xab5b72f8eac09d083aa0b359ebe0a970",
+    "note": "F32 2D vectors; no sqrt; sealed"
+  },
+  "hex": {
+    "hash": "0xf941a081d658b4ed09b0d1c5a3d26f48",
+    "note": "Strict lowercase hex codec; sealed"
+  },
+  "unionfind": {
+    "hash": "0xa7cf27ec43eaf330fae4f6dc71a5f4aa",
+    "note": "Functional Map-backed union-find; sealed"
   }
 }
