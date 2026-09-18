@@ -78,5 +78,9 @@
   "csv": {
     "hash": "0x36062a6887f9a7dac4ca208d99d96105",
     "note": "Line-oriented CSV subset; sealed"
+  },
+  "crc32": {
+    "hash": "0xff0c68fa4ce715b1f30ee5944192f0b7",
+    "note": "CRC-32 ISO 3309 / Ethernet; sealed check vectors"
   }
 }
