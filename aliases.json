@@ -90,5 +90,9 @@
   "range": {
     "hash": "0x498c837faf89711c8803bb21f694c5ca",
     "note": "Inclusive/exclusive Nat+U32 ranges; sealed"
+  },
+  "color": {
+    "hash": "0xc6ecb72f45a1b2f83318765698582f7f",
+    "note": "Rgb/Hsl convert + show + ColorRange validate; layer-1 sealed"
   }
 }
