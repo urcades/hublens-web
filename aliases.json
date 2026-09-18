@@ -86,5 +86,9 @@
   "url": {
     "hash": "0x4c13780015689c83e56d725a171fc6e9",
     "note": "Absolute http/https URL parse/build; no userinfo; sealed"
+  },
+  "range": {
+    "hash": "0x498c837faf89711c8803bb21f694c5ca",
+    "note": "Inclusive/exclusive Nat+U32 ranges; sealed"
   }
 }
