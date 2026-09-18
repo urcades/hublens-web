@@ -94,5 +94,9 @@
   "color": {
     "hash": "0xc6ecb72f45a1b2f83318765698582f7f",
     "note": "Rgb/Hsl convert + show + ColorRange validate; layer-1 sealed"
+  },
+  "prng": {
+    "hash": "0xfd7037736e4fa1794a671d0278638da7",
+    "note": "xorshift32 seeded PRNG; sealed reference vectors"
   }
 }
