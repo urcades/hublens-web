@@ -1,5 +1,5 @@
 /**
- * HubLens static SPA — live from BendHub, aliases from ./aliases.json.
+ * BendLens static SPA — live from BendHub, aliases from ./aliases.json.
  * Badges computed client-side (ported from src/badges.ts).
  */
 const HUB = "https://hub.bend-lang.com";
