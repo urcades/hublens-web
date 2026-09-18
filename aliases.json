@@ -82,5 +82,9 @@
   "crc32": {
     "hash": "0xff0c68fa4ce715b1f30ee5944192f0b7",
     "note": "CRC-32 ISO 3309 / Ethernet; sealed check vectors"
+  },
+  "url": {
+    "hash": "0x4c13780015689c83e56d725a171fc6e9",
+    "note": "Absolute http/https URL parse/build; no userinfo; sealed"
   }
 }
