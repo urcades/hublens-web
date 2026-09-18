@@ -70,5 +70,9 @@
   "semver": {
     "hash": "0x697f24d2ad7ac8b3f8c00016670be6af",
     "note": "U32 major.minor.patch; no prerelease/build; sealed"
+  },
+  "base64": {
+    "hash": "0xd9193642e70279e288909ba354d1bb6a",
+    "note": "RFC 4648 Base64 over List<&2,U32> octets; sealed"
   }
 }
